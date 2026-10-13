@@ -1,0 +1,25 @@
+# Local environment files and secrets
+.env
+.env.*
+!.env.example
+*.local.php
+wp-config.php
+
+# Database exports and logs
+*.sql
+*.sql.gz
+*.log
+
+# Operating system files
+.DS_Store
+._*
+Thumbs.db
+
+# Editor and temporary files
+*.swp
+*.swo
+*~
+
+# JavaScript dependencies (the runtime-loaded build/ directory stays tracked)
+/node_modules/
+npm-debug.log*
