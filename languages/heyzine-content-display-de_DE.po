@@ -1,0 +1,177 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Heyzine Content Display\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Domain: heyzine-content-display\n"
+
+msgid "Heyzine Content Display Settings"
+msgstr "Einstellungen für Heyzine Content Display"
+
+msgid "Heyzine Content Display"
+msgstr "Heyzine Content Display"
+
+msgid "Embed Heyzine flipbooks and display flipbook lists with Gutenberg blocks and shortcodes."
+msgstr "Heyzine-Flipbooks einbetten und Flipbook-Listen mit Gutenberg-Blöcken und Shortcodes anzeigen."
+
+msgid "Client ID"
+msgstr "Client-ID"
+
+msgid "API Key"
+msgstr "API-Schlüssel"
+
+msgid "Default flipbook embed width"
+msgstr "Standardbreite des Flipbook-Einbettungsbereichs"
+
+msgid "Allowed examples:"
+msgstr "Zulässige Beispiele:"
+
+msgid "Default flipbook embed height"
+msgstr "Standardhöhe des Flipbook-Einbettungsbereichs"
+
+msgid "Mobile to tablet breakpoint"
+msgstr "Breakpoint von Mobil zu Tablet"
+
+msgid "Tablet to desktop breakpoint"
+msgstr "Breakpoint von Tablet zu Desktop"
+
+msgid "Flipbook URLs"
+msgstr "Magazin-URLs"
+
+msgid "Use pretty URLs with rewrite rules"
+msgstr "Schöne URLs mit Rewrite-Regeln verwenden"
+
+msgid "Requires working mod_rewrite support and WordPress permalinks. When disabled, the plugin uses the query URL %s."
+msgstr "Erfordert funktionierende mod_rewrite-Unterstützung und WordPress-Permalinks. Ist die Option deaktiviert, verwendet das Plugin die Query-URL %s."
+
+msgid "URL path"
+msgstr "URL-Pfad"
+
+msgid "Current URL path:"
+msgstr "Aktueller URL-Pfad:"
+
+msgid "API test"
+msgstr "API-Test"
+
+msgid "Testing connection..."
+msgstr "Verbindung wird getestet …"
+
+msgid "✓ API connection successful!"
+msgstr "✓ API-Verbindung erfolgreich!"
+
+msgid "Unknown error."
+msgstr "Unbekannter Fehler."
+
+msgid "✗ API error: "
+msgstr "✗ API-Fehler: "
+
+msgid "✗ API error: Network error"
+msgstr "✗ API-Fehler: Netzwerkfehler"
+
+msgid "You are not allowed to do this."
+msgstr "Du bist nicht berechtigt, diese Aktion auszuführen."
+
+msgid "Please save your Client ID and API key first."
+msgstr "Bitte speichere zuerst deine Client-ID und deinen API-Schlüssel."
+
+msgid "API connection failed."
+msgstr "API-Verbindung fehlgeschlagen."
+
+msgid "API connection successful."
+msgstr "API-Verbindung erfolgreich."
+
+msgid "Invalid Heyzine embed URL."
+msgstr "Ungültige Heyzine-Einbettungs-URL."
+
+msgid "API error: %s"
+msgstr "API-Fehler: %s"
+
+msgid "No flipbooks found."
+msgstr "Keine Flipbooks gefunden."
+
+msgid "Flipbook not found."
+msgstr "Flipbook nicht gefunden."
+
+msgid "No flipbook was specified."
+msgstr "Es wurde kein Flipbook angegeben."
+
+msgid "API key not set"
+msgstr "API-Schlüssel ist nicht hinterlegt."
+
+msgid "Unknown API error"
+msgstr "Unbekannter API-Fehler"
+
+msgid "Heyzine Flipbook"
+msgstr "Heyzine-Flipbook"
+
+msgid "Select a flipbook"
+msgstr "Flipbook auswählen"
+
+msgid "Show newest flipbook"
+msgstr "Neuestes Flipbook anzeigen"
+
+msgid "Width"
+msgstr "Breite"
+
+msgid "Leave empty to use the default value."
+msgstr "Leer lassen, um den Standardwert zu verwenden."
+
+msgid "Height"
+msgstr "Höhe"
+
+msgid "No flipbook selected."
+msgstr "Kein Flipbook ausgewählt."
+
+msgid "Heyzine Flipbook List"
+msgstr "Heyzine-Flipbook-Liste"
+
+msgid "Heyzine API error:"
+msgstr "Heyzine-API-Fehler:"
+
+msgid "Invalid API response."
+msgstr "Ungültige API-Antwort."
+
+msgid "Fetch or network error:"
+msgstr "Abruf- oder Netzwerkfehler:"
+
+msgid "Flipbook list settings"
+msgstr "Einstellungen der Flipbook-Liste"
+
+msgid "Starting index in the list."
+msgstr "Startindex in der Liste."
+
+msgid "Number of items"
+msgstr "Anzahl der Elemente"
+
+msgid "Number of flipbooks to display."
+msgstr "Anzahl der anzuzeigenden Flipbooks."
+
+msgid "Sort order"
+msgstr "Sortierung"
+
+msgid "Descending (newest first)"
+msgstr "Absteigend (neueste zuerst)"
+
+msgid "Ascending (oldest first)"
+msgstr "Aufsteigend (älteste zuerst)"
+
+msgid "Columns (mobile)"
+msgstr "Spalten (Mobil)"
+
+msgid "Columns (tablet)"
+msgstr "Spalten (Tablet)"
+
+msgid "Columns (desktop)"
+msgstr "Spalten (Desktop)"
+
+msgid "Show titles"
+msgstr "Titel anzeigen"
+
+msgid "Open links in a new tab"
+msgstr "Links in neuem Tab öffnen"
+
+msgid "Open flipbooks in an on-site embed"
+msgstr "Flipbooks auf der Website einbetten"

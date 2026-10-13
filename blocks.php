@@ -11,6 +11,11 @@ function hcd_register_blocks() {
         array('wp-blocks', 'wp-element', 'wp-editor', 'wp-components', 'wp-i18n'),
         filemtime(plugin_dir_path(__FILE__) . 'blocks/index.js')
     );
+    wp_set_script_translations(
+        'hcd-blocks-js',
+        'heyzine-content-display',
+        plugin_dir_path(__FILE__) . 'languages'
+    );
 
     wp_localize_script(
         'hcd-blocks-js',
@@ -138,7 +143,7 @@ function hcd_render_flipbook_list_block($attributes) {
 
 add_action('wp_ajax_hcd_get_flipbooks', function() {
     if (!current_user_can('edit_posts')) {
-        wp_send_json_error(array('message' => 'Keine Berechtigung.'), 403);
+        wp_send_json_error(array('message' => __('You are not allowed to do this.', 'heyzine-content-display')), 403);
     }
     check_ajax_referer('hcd_get_flipbooks', 'nonce');
 
@@ -148,7 +153,7 @@ add_action('wp_ajax_hcd_get_flipbooks', function() {
         wp_send_json(array(
             'success' => false,
             'code' => isset($flipbooks['code']) ? $flipbooks['code'] : 500,
-            'msg'   => isset($flipbooks['msg']) ? $flipbooks['msg'] : 'Unknown API error',
+            'msg'   => isset($flipbooks['msg']) ? $flipbooks['msg'] : __('Unknown API error', 'heyzine-content-display'),
         ));
     }
 
@@ -156,7 +161,7 @@ add_action('wp_ajax_hcd_get_flipbooks', function() {
         wp_send_json(array(
             'success' => false,
             'code' => 404,
-            'msg'   => 'No flipbooks found',
+            'msg'   => __('No flipbooks found.', 'heyzine-content-display'),
         ));
     }
 

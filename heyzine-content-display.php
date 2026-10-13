@@ -1,11 +1,13 @@
 <?php 
 /**
  * Plugin Name: Heyzine Content Display
- * Description: This plugin will display Heyzine content via embeds and archive lists.
+ * Description: Embed Heyzine flipbooks and display flipbook lists with Gutenberg blocks and shortcodes.
  * Version: 1.0.0
  * Author: Michael Ilg
  * License: GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ * Text Domain: heyzine-content-display
+ * Domain Path: /languages
  */
 
 if (!defined('ABSPATH')) {
@@ -17,6 +19,15 @@ require_once plugin_dir_path(__FILE__) . 'api.php';
 require_once plugin_dir_path(__FILE__) . 'shortcodes.php';
 require_once plugin_dir_path(__FILE__) . 'blocks.php';
 require_once plugin_dir_path(__FILE__) . 'common.php';
+
+function hcd_load_textdomain() {
+    load_plugin_textdomain(
+        'heyzine-content-display',
+        false,
+        dirname(plugin_basename(__FILE__)) . '/languages'
+    );
+}
+add_action('init', 'hcd_load_textdomain');
 
 // Bump this when the plugin's rewrite rules change independently of their settings.
 define('HCD_REWRITE_RULES_VERSION', '2');

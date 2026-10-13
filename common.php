@@ -15,7 +15,7 @@ function hcd_generate_flipbook_iframe($embed_url, $width = null, $height = null)
 
     $embed_url = hcd_get_safe_embed_url($embed_url);
     if ($embed_url === '') {
-        return '<p>Ungültige Heyzine-Embed-URL.</p>';
+        return '<p>' . esc_html__('Invalid Heyzine embed URL.', 'heyzine-content-display') . '</p>';
     }
 
     return '<iframe src="' . esc_url($embed_url) . '" width="' . esc_attr($width) . '" height="' . esc_attr($height) . '" style="border:0;width:' . esc_attr($width) . ';height:' . esc_attr($height) . ';" frameborder="0" allowfullscreen></iframe>';
@@ -44,11 +44,11 @@ function hcd_render_flipbook_embed($flipbookId = null, $showNewest = false, $wid
     $items = hcd_call_api('flipbook-list', array());
 
     if (isset($items['success']) && $items['success'] === false) {
-        return '<p>API Fehler: ' . esc_html($items['msg']) . '</p>';
+        return '<p>' . sprintf(esc_html__('API error: %s', 'heyzine-content-display'), esc_html($items['msg'])) . '</p>';
     }
 
     if (empty($items)) {
-        return '<p>No items found.</p>';
+        return '<p>' . esc_html__('No flipbooks found.', 'heyzine-content-display') . '</p>';
     }
 
     if ($showNewest) {
@@ -68,15 +68,15 @@ function hcd_render_flipbook_embed($flipbookId = null, $showNewest = false, $wid
             }
         }
         if ($flipbook === null) {
-            return '<p>Flipbook not found.</p>';
+            return '<p>' . esc_html__('Flipbook not found.', 'heyzine-content-display') . '</p>';
         }
     } else {
-        return '<p>No flipbook specified.</p>';
+        return '<p>' . esc_html__('No flipbook was specified.', 'heyzine-content-display') . '</p>';
     }
 
     $embed_url = isset($flipbook['links']['base']) ? hcd_get_safe_embed_url($flipbook['links']['base']) : '';
     if ($embed_url === '') {
-        return '<p>Ungültige Heyzine-Embed-URL.</p>';
+        return '<p>' . esc_html__('Invalid Heyzine embed URL.', 'heyzine-content-display') . '</p>';
     }
     $title = esc_html($flipbook['title']);
 
@@ -103,11 +103,11 @@ function hcd_flipbook_list($atts) {
     $items = hcd_call_api('flipbook-list', $params);
 
     if (isset($items['success']) && $items['success'] === false) {
-        return '<p>API Fehler: ' . esc_html($items['msg']) . '</p>';
+        return '<p>' . sprintf(esc_html__('API error: %s', 'heyzine-content-display'), esc_html($items['msg'])) . '</p>';
     }
 
     if (empty($items)) {
-        return '<p>No items found.</p>';
+        return '<p>' . esc_html__('No flipbooks found.', 'heyzine-content-display') . '</p>';
     }
 
     // Sort items by date according to order
@@ -127,7 +127,7 @@ function hcd_flipbook_list($atts) {
     $items = array_slice($items, $start, $count);
 
     if (empty($items)) {
-        return '<p>No items found.</p>';
+        return '<p>' . esc_html__('No flipbooks found.', 'heyzine-content-display') . '</p>';
     }
 
     $columns_mobile = intval($atts['columns_mobile']);

@@ -79,8 +79,8 @@ function hcd_sanitize_breakpoint_tablet_desktop($value) {
 // Add options page to the admin menu
 function hcd_register_options_page() {
     add_options_page(
-        'Heyzine Content Display Settings',
-        'Heyzine Content Display',
+        __('Heyzine Content Display Settings', 'heyzine-content-display'),
+        __('Heyzine Content Display', 'heyzine-content-display'),
         'manage_options',
         'heyzine-content-display',
         'hcd_options_page'
@@ -91,7 +91,7 @@ function hcd_register_options_page() {
 function hcd_options_page() {
     ?>
     <div class="wrap">
-        <h1>Heyzine Content Display Settings</h1>
+        <h1><?php esc_html_e('Heyzine Content Display Settings', 'heyzine-content-display'); ?></h1>
         <form method="post" action="options.php">
             <?php
             settings_fields('hcd_options_group');
@@ -99,58 +99,65 @@ function hcd_options_page() {
             ?>
             <table class="form-table">
                 <tr valign="top">
-                    <th scope="row">Client ID</th>
+                    <th scope="row"><?php esc_html_e('Client ID', 'heyzine-content-display'); ?></th>
                     <td><input type="text" name="hcd_client_id" value="<?php echo esc_attr(get_option('hcd_client_id')); ?>" /></td>
                 </tr>
                 <tr valign="top">
-                    <th scope="row">API Key</th>
+                    <th scope="row"><?php esc_html_e('API Key', 'heyzine-content-display'); ?></th>
                     <td><input type="text" name="hcd_api_key" value="<?php echo esc_attr(get_option('hcd_api_key')); ?>" /></td>
                 </tr>
                 <tr valign="top">
-                    <th scope="row">Standard Flipbook Embed Breite</th>
-                    <td><input type="text" name="hcd_flipbook_width" value="<?php echo esc_attr(hcd_get_default_flipbook_width()); ?>" /> <p class="description">Zulässig sind Maße wie <code>100%</code>, <code>800px</code> oder <code>90vh</code>.</p></td>
+                    <th scope="row"><?php esc_html_e('Default flipbook embed width', 'heyzine-content-display'); ?></th>
+                    <td><input type="text" name="hcd_flipbook_width" value="<?php echo esc_attr(hcd_get_default_flipbook_width()); ?>" /> <p class="description"><?php esc_html_e('Allowed examples:', 'heyzine-content-display'); ?> <code>100%</code>, <code>800px</code>, <code>90vh</code>.</p></td>
                 </tr>
                 <tr valign="top">
-                    <th scope="row">Standard Flipbook Embed Höhe</th>
-                    <td><input type="text" name="hcd_flipbook_height" value="<?php echo esc_attr(hcd_get_default_flipbook_height()); ?>" /> <p class="description">Zulässig sind Maße wie <code>600</code>, <code>90%</code> oder <code>90vh</code>.</p></td>
+                    <th scope="row"><?php esc_html_e('Default flipbook embed height', 'heyzine-content-display'); ?></th>
+                    <td><input type="text" name="hcd_flipbook_height" value="<?php echo esc_attr(hcd_get_default_flipbook_height()); ?>" /> <p class="description"><?php esc_html_e('Allowed examples:', 'heyzine-content-display'); ?> <code>600</code>, <code>90%</code>, <code>90vh</code>.</p></td>
                 </tr>
                 <tr valign="top">
-                    <th scope="row">Breakpoint Mobile zu Tablet</th>
+                    <th scope="row"><?php esc_html_e('Mobile to tablet breakpoint', 'heyzine-content-display'); ?></th>
                     <td><input type="number" min="1" max="10000" step="1" name="hcd_breakpoint_mobile_tablet" value="<?php echo esc_attr(hcd_get_breakpoint_mobile_tablet()); ?>" /></td>
                 </tr>
                 <tr valign="top">
-                    <th scope="row">Breakpoint Tablet zu Desktop</th>
+                    <th scope="row"><?php esc_html_e('Tablet to desktop breakpoint', 'heyzine-content-display'); ?></th>
                     <td><input type="number" min="1" max="10000" step="1" name="hcd_breakpoint_tablet_desktop" value="<?php echo esc_attr(hcd_get_breakpoint_tablet_desktop()); ?>" /></td>
                 </tr>
                 <tr valign="top">
-                    <th scope="row">Magazin-URLs</th>
+                    <th scope="row"><?php esc_html_e('Flipbook URLs', 'heyzine-content-display'); ?></th>
                     <td>
                         <input type="hidden" name="hcd_pretty_urls" value="0" />
                         <label>
                             <input type="checkbox" name="hcd_pretty_urls" value="1" <?php checked(hcd_is_pretty_urls_enabled()); ?> />
-                            Schöne URLs mit Rewrite verwenden
+                            <?php esc_html_e('Use pretty URLs with rewrite rules', 'heyzine-content-display'); ?>
                         </label>
-                        <p class="description">Benötigt mod_rewrite und funktionierende WordPress-Permalinks auf dem Server. Ist die Option aus, verwendet das Plugin die Query-URL mit <code>?flipbook_id=…</code>.</p>
+                        <p class="description"><?php echo wp_kses_post(sprintf(__('Requires working mod_rewrite support and WordPress permalinks. When disabled, the plugin uses the query URL %s.', 'heyzine-content-display'), '<code>?flipbook_id=…</code>')); ?></p>
                     </td>
                 </tr>
                 <tr valign="top">
-                    <th scope="row"><label for="hcd_rewrite_slug">URL-Pfad</label></th>
+                    <th scope="row"><label for="hcd_rewrite_slug"><?php esc_html_e('URL path', 'heyzine-content-display'); ?></label></th>
                     <td>
                         <input type="text" id="hcd_rewrite_slug" name="hcd_rewrite_slug" value="<?php echo esc_attr(hcd_get_rewrite_slug()); ?>" class="regular-text" />
-                        <p class="description">Aktueller URL-Pfad: <code>/<span id="hcd-rewrite-slug-preview"><?php echo esc_html(hcd_get_rewrite_slug()); ?></span>/flipbook-id</code>.</p>
+                        <p class="description"><?php esc_html_e('Current URL path:', 'heyzine-content-display'); ?> <code>/<span id="hcd-rewrite-slug-preview"><?php echo esc_html(hcd_get_rewrite_slug()); ?></span>/flipbook-id</code>.</p>
                     </td>
                 </tr>
             </table>
             <?php submit_button(); ?>
         </form>
         <hr>
-        <h2>API Test</h2>
-        <button id="hcd-api-test-btn" class="button button-secondary">API Test</button>
+        <h2><?php esc_html_e('API test', 'heyzine-content-display'); ?></h2>
+        <button id="hcd-api-test-btn" class="button button-secondary"><?php esc_html_e('API test', 'heyzine-content-display'); ?></button>
         <span id="hcd-api-test-result" style="margin-left:1em;"></span>
     </div>
     <script type="text/javascript">
     (function($){
         var hcdTestApiNonce = <?php echo wp_json_encode(wp_create_nonce('hcd_test_api')); ?>;
+        var hcdAdminStrings = <?php echo wp_json_encode(array(
+            'testingConnection' => __('Testing connection...', 'heyzine-content-display'),
+            'connectionSuccess' => __('✓ API connection successful!', 'heyzine-content-display'),
+            'unknownError' => __('Unknown error.', 'heyzine-content-display'),
+            'apiErrorPrefix' => __('✗ API error: ', 'heyzine-content-display'),
+            'networkError' => __('✗ API error: Network error', 'heyzine-content-display'),
+        )); ?>;
 
         $('#hcd_rewrite_slug').on('input', function(){
             var slug = $(this).val().toLowerCase();
@@ -165,24 +172,24 @@ function hcd_options_page() {
             e.preventDefault();
             var $btn = $(this);
             var $result = $('#hcd-api-test-result');
-            $result.text('Teste Verbindung...');
+            $result.text(hcdAdminStrings.testingConnection);
             $btn.prop('disabled', true);
             $.post(ajaxurl, { action: 'hcd_test_api', nonce: hcdTestApiNonce }, function(response){
                 if(response && response.success){
                     $result.empty().append(
-                        $('<span>').css('color', 'green').text('✓ API Verbindung erfolgreich!'),
+                        $('<span>').css('color', 'green').text(hcdAdminStrings.connectionSuccess),
                         $('<pre>').text(response.data.data || '')
                     );
                 } else {
-                    var msg = (response && response.data && response.data.message) ? response.data.message : 'Unbekannter Fehler.';
+                    var msg = (response && response.data && response.data.message) ? response.data.message : hcdAdminStrings.unknownError;
                     $result.empty().append(
-                        $('<span>').css('color', 'red').text('✗ API Fehler: ' + msg)
+                        $('<span>').css('color', 'red').text(hcdAdminStrings.apiErrorPrefix + msg)
                     );
                 }
                 $btn.prop('disabled', false);
             }).fail(function(xhr){
                 $result.empty().append(
-                    $('<span>').css('color', 'red').text('✗ API Fehler: Netzwerkfehler')
+                        $('<span>').css('color', 'red').text(hcdAdminStrings.networkError)
                 );
                 $btn.prop('disabled', false);
             });
@@ -216,22 +223,22 @@ add_action('admin_menu', 'hcd_register_options_page');
 add_action('wp_ajax_hcd_test_api', 'hcd_ajax_test_api');
 function hcd_ajax_test_api() {
     if (!current_user_can('manage_options')) {
-        wp_send_json_error(array('message' => 'Keine Berechtigung.'), 403);
+        wp_send_json_error(array('message' => __('You are not allowed to do this.', 'heyzine-content-display')), 403);
     }
     check_ajax_referer('hcd_test_api', 'nonce');
 
     $client_id = get_option('hcd_client_id');
     $api_key = get_option('hcd_api_key');
     if (empty($client_id) || empty($api_key)) {
-        wp_send_json_error(array('message' => 'Bitte Client ID und API Key speichern.'));
+        wp_send_json_error(array('message' => __('Please save your Client ID and API key first.', 'heyzine-content-display')));
     }
     // Prepare API call to Heyzine using hcd_call_api function
     $response = hcd_call_api('flipbook-list', ['limit' => 1]);
     if ($response === false) {
-        wp_send_json_error(array('message' => 'API Verbindung fehlgeschlagen.'));
+        wp_send_json_error(array('message' => __('API connection failed.', 'heyzine-content-display')));
     }
     wp_send_json_success(array(
-        'message' => 'API Verbindung erfolgreich!',
+        'message' => __('API connection successful.', 'heyzine-content-display'),
         'data' => json_encode($response, JSON_PRETTY_PRINT)
     ));
 }

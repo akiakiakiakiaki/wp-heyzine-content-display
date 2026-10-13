@@ -1,0 +1,93 @@
+{
+  "translation-revision-date": "2026-10-13 00:00:00+0000",
+  "generator": "Manual",
+  "source": "blocks/index.js",
+  "domain": "messages",
+  "locale_data": {
+    "messages": {
+      "": {
+        "domain": "messages",
+        "lang": "de_DE",
+        "plural-forms": "nplurals=2; plural=(n != 1);"
+      },
+      "Invalid Heyzine embed URL.": [
+        "Ungültige Heyzine-Einbettungs-URL."
+      ],
+      "Heyzine Flipbook": [
+        "Heyzine-Flipbook"
+      ],
+      "Select a flipbook": [
+        "Flipbook auswählen"
+      ],
+      "Show newest flipbook": [
+        "Neuestes Flipbook anzeigen"
+      ],
+      "Width": [
+        "Breite"
+      ],
+      "Leave empty to use the default value.": [
+        "Leer lassen, um den Standardwert zu verwenden."
+      ],
+      "Height": [
+        "Höhe"
+      ],
+      "No flipbook selected.": [
+        "Kein Flipbook ausgewählt."
+      ],
+      "Heyzine Flipbook List": [
+        "Heyzine-Flipbook-Liste"
+      ],
+      "Heyzine API error:": [
+        "Heyzine-API-Fehler:"
+      ],
+      "Unknown error.": [
+        "Unbekannter Fehler."
+      ],
+      "Invalid API response.": [
+        "Ungültige API-Antwort."
+      ],
+      "Fetch or network error:": [
+        "Abruf- oder Netzwerkfehler:"
+      ],
+      "Flipbook list settings": [
+        "Einstellungen der Flipbook-Liste"
+      ],
+      "Starting index in the list.": [
+        "Startindex in der Liste."
+      ],
+      "Number of items": [
+        "Anzahl der Elemente"
+      ],
+      "Number of flipbooks to display.": [
+        "Anzahl der anzuzeigenden Flipbooks."
+      ],
+      "Sort order": [
+        "Sortierung"
+      ],
+      "Descending (newest first)": [
+        "Absteigend (neueste zuerst)"
+      ],
+      "Ascending (oldest first)": [
+        "Aufsteigend (älteste zuerst)"
+      ],
+      "Columns (mobile)": [
+        "Spalten (Mobil)"
+      ],
+      "Columns (tablet)": [
+        "Spalten (Tablet)"
+      ],
+      "Columns (desktop)": [
+        "Spalten (Desktop)"
+      ],
+      "Show titles": [
+        "Titel anzeigen"
+      ],
+      "Open links in a new tab": [
+        "Links in neuem Tab öffnen"
+      ],
+      "Open flipbooks in an on-site embed": [
+        "Flipbooks auf der Website einbetten"
+      ]
+    }
+  }
+}

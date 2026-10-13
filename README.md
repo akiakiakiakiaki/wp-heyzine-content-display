@@ -9,6 +9,11 @@ Embed Heyzine flipbooks in WordPress, display configurable flipbook lists, and m
 - Configurable embed dimensions
 - Internal flipbook pages with a configurable URL path, or query-string URLs as a fallback
 - HTTPS embed URLs restricted to `heyzine.com` and `www.heyzine.com`
+- English and German plugin interface translations
+
+## Languages
+
+The plugin interface is available in English and German. English is the default; WordPress selects the translation based on the site language, with a user's profile language taking precedence in the admin area when set. The screenshots below show the German interface.
 
 ## Requirements
 

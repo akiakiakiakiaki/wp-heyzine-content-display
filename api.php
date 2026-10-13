@@ -7,7 +7,7 @@ function hcd_call_api($endpoint, $params = array()) {
         return array(
             'success' => false,
             'code' => 401,
-            'msg' => 'API key not set'
+            'msg' => __('API key not set', 'heyzine-content-display')
         );
     }
 
@@ -44,7 +44,7 @@ function hcd_call_api($endpoint, $params = array()) {
         return array(
             'success' => false,
             'code' => isset($data['code']) ? $data['code'] : 500,
-            'msg' => isset($data['msg']) ? $data['msg'] : 'Unknown error',
+            'msg' => isset($data['msg']) ? $data['msg'] : __('Unknown API error', 'heyzine-content-display'),
         );
     }
 

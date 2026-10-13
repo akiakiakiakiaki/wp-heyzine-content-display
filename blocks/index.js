@@ -3,6 +3,7 @@ const { SelectControl, CheckboxControl, TextControl } = wp.components;
 const { InspectorControls } = wp.blockEditor || wp.editor;
 const { PanelBody } = wp.components;
 const { useState, useEffect, createElement, Fragment } = wp.element;
+const { __ } = wp.i18n;
 
 function normalizeDimension(value, fallback) {
     const normalized = String(value || fallback).trim().toLowerCase();
@@ -30,7 +31,7 @@ function renderFlipbookIframe(embedUrl, width, height, isEditor = false) {
     const defaultWidth = (typeof hcdFlipbookDefaults !== 'undefined' && hcdFlipbookDefaults.width) ? hcdFlipbookDefaults.width : '100%';
     const defaultHeight = (typeof hcdFlipbookDefaults !== 'undefined' && hcdFlipbookDefaults.height) ? hcdFlipbookDefaults.height : '600';
     if (!isSafeHeyzineEmbedUrl(embedUrl)) {
-        return createElement('p', null, 'Ungültige Heyzine-Embed-URL');
+        return createElement('p', null, __('Invalid Heyzine embed URL.', 'heyzine-content-display'));
     }
 
     const renderedWidth = normalizeDimension(width, defaultWidth);
@@ -68,7 +69,7 @@ function renderFlipbookIframe(embedUrl, width, height, isEditor = false) {
 }
 
 registerBlockType('heyzine/flipbook-embed', {
-    title: 'Heyzine Flipbook',
+    title: __('Heyzine Flipbook', 'heyzine-content-display'),
     icon: 'book',
     category: 'widgets',
     attributes: {
@@ -106,14 +107,14 @@ registerBlockType('heyzine/flipbook-embed', {
                 null,
                 createElement(
                     PanelBody,
-                    { title: "Flipbook auswählen" },
+                    { title: __('Select a flipbook', 'heyzine-content-display') },
                     createElement(CheckboxControl, {
-                        label: "Neuestes Flipbook zeigen",
+                        label: __('Show newest flipbook', 'heyzine-content-display'),
                         checked: attributes.showNewest,
                         onChange: (value) => setAttributes({ showNewest: value }),
                     }),
                     createElement(SelectControl, {
-                        label: "Flipbook auswählen",
+                        label: __('Select a flipbook', 'heyzine-content-display'),
                         value: attributes.flipbookId,
                         options: flipbooks.map(fb => ({
                             label: fb.title && fb.title.trim() !== '' ? fb.title : fb.date,
@@ -123,16 +124,16 @@ registerBlockType('heyzine/flipbook-embed', {
                         disabled: attributes.showNewest
                     }),
                     createElement(TextControl, {
-                        label: "Breite (Width)",
+                        label: __('Width', 'heyzine-content-display'),
                         value: attributes.width,
                         onChange: (value) => setAttributes({ width: value }),
-                        help: "Lassen Sie leer, um den Standardwert zu verwenden"
+                        help: __('Leave empty to use the default value.', 'heyzine-content-display')
                     }),
                     createElement(TextControl, {
-                        label: "Höhe (Height)",
+                        label: __('Height', 'heyzine-content-display'),
                         value: attributes.height,
                         onChange: (value) => setAttributes({ height: value }),
-                        help: "Lassen Sie leer, um den Standardwert zu verwenden"
+                        help: __('Leave empty to use the default value.', 'heyzine-content-display')
                     })
                 )
             ),
@@ -146,7 +147,7 @@ registerBlockType('heyzine/flipbook-embed', {
                         if (flipbooks && flipbooks.length > 0 && flipbooks[0].embed) {
                             return renderFlipbookIframe(flipbooks[0].embed, attributes.width || undefined, attributes.height || undefined, true);
                         } else {
-                            return createElement('p', null, 'Kein Flipbook ausgewählt');
+                            return createElement('p', null, __('No flipbook selected.', 'heyzine-content-display'));
                         }
                     } else if (attributes.flipbookId) {
                         // Find the selected flipbook
@@ -154,10 +155,10 @@ registerBlockType('heyzine/flipbook-embed', {
                         if (fb && fb.embed) {
                             return renderFlipbookIframe(fb.embed, attributes.width || undefined, attributes.height || undefined, true);
                         } else {
-                            return createElement('p', null, 'Kein Flipbook ausgewählt');
+                            return createElement('p', null, __('No flipbook selected.', 'heyzine-content-display'));
                         }
                     } else {
-                        return createElement('p', null, 'Kein Flipbook ausgewählt');
+                        return createElement('p', null, __('No flipbook selected.', 'heyzine-content-display'));
                     }
                 })()
             )
@@ -170,7 +171,7 @@ registerBlockType('heyzine/flipbook-embed', {
 });
 
 registerBlockType('heyzine/flipbook-list', {
-    title: 'Heyzine Flipbook Liste',
+    title: __('Heyzine Flipbook List', 'heyzine-content-display'),
     icon: 'list-view',
     category: 'widgets',
     attributes: {
@@ -232,12 +233,12 @@ registerBlockType('heyzine/flipbook-list', {
                 .then(data => {
                     // catch api errors
                     if (typeof data.success === 'boolean' && data.success === false) {
-                        console.error("Heyzine API Fehler:", data.msg || 'Unbekannter Fehler');
+                        console.error(__('Heyzine API error:', 'heyzine-content-display'), data.msg || __('Unknown error.', 'heyzine-content-display'));
                         setFlipbooks([]);
                         return;
                     }
                     if (!Array.isArray(data)) {
-                        console.error("Ungültige API-Antwort", data);
+                        console.error(__('Invalid API response.', 'heyzine-content-display'), data);
                         setFlipbooks([]);
                         return;
                     }
@@ -253,7 +254,7 @@ registerBlockType('heyzine/flipbook-list', {
                     setFlipbooks(sliced);
                 })
                 .catch(err => {
-                    console.error("Fetch/Netzwerk-Fehler:", err);
+                    console.error(__('Fetch or network error:', 'heyzine-content-display'), err);
                     setFlipbooks([]);
                 });
         }, [start, count, order]);
@@ -290,60 +291,60 @@ registerBlockType('heyzine/flipbook-list', {
                 null,
                 createElement(
                     PanelBody,
-                    { title: "Flipbook Liste Einstellungen" },
+                    { title: __('Flipbook list settings', 'heyzine-content-display') },
                     createElement(TextControl, {
                         label: "Start",
                         type: "number",
                         value: start,
                         onChange: (value) => setAttributes({ start: parseInt(value) || 0 }),
-                        help: "Startindex der Liste"
+                        help: __('Starting index in the list.', 'heyzine-content-display')
                     }),
                     createElement(TextControl, {
-                        label: "Anzahl",
+                        label: __('Number of items', 'heyzine-content-display'),
                         type: "number",
                         value: count,
                         onChange: (value) => setAttributes({ count: parseInt(value) || 10 }),
-                        help: "Anzahl der anzuzeigenden Flipbooks"
+                        help: __('Number of flipbooks to display.', 'heyzine-content-display')
                     }),
                     createElement(SelectControl, {
-                        label: "Sortierreihenfolge",
+                        label: __('Sort order', 'heyzine-content-display'),
                         value: order,
                         options: [
-                            { label: 'Absteigend (desc)', value: 'desc' },
-                            { label: 'Aufsteigend (asc)', value: 'asc' }
+                            { label: __('Descending (newest first)', 'heyzine-content-display'), value: 'desc' },
+                            { label: __('Ascending (oldest first)', 'heyzine-content-display'), value: 'asc' }
                         ],
                         onChange: (value) => setAttributes({ order: value }),
                     }),
                     createElement(TextControl, {
-                        label: "Spalten (Mobil)",
+                        label: __('Columns (mobile)', 'heyzine-content-display'),
                         type: "number",
                         value: columns_mobile,
                         onChange: (value) => setAttributes({ columns_mobile: parseInt(value) || 2 }),
                     }),
                     createElement(TextControl, {
-                        label: "Spalten (Tablet)",
+                        label: __('Columns (tablet)', 'heyzine-content-display'),
                         type: "number",
                         value: columns_tablet,
                         onChange: (value) => setAttributes({ columns_tablet: parseInt(value) || 3 }),
                     }),
                     createElement(TextControl, {
-                        label: "Spalten (Desktop)",
+                        label: __('Columns (desktop)', 'heyzine-content-display'),
                         type: "number",
                         value: columns_desktop,
                         onChange: (value) => setAttributes({ columns_desktop: parseInt(value) || 5 }),
                     }),
                     createElement(CheckboxControl, {
-                        label: "Titel anzeigen",
+                        label: __('Show titles', 'heyzine-content-display'),
                         checked: show_titles,
                         onChange: (value) => setAttributes({ show_titles: value }),
                     }),
                     createElement(CheckboxControl, {
-                        label: "Links in neuem Fenster öffnen",
+                        label: __('Open links in a new tab', 'heyzine-content-display'),
                         checked: open_in_new_window,
                         onChange: (value) => setAttributes({ open_in_new_window: value }),
                     }),
                     createElement(CheckboxControl, {
-                        label: "Flipbooks als Embed öffnen",
+                        label: __('Open flipbooks in an on-site embed', 'heyzine-content-display'),
                         checked: open_on_site_embed,
                         onChange: (value) => setAttributes({ open_on_site_embed: value }),
                     })
